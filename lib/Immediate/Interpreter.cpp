@@ -492,6 +492,7 @@ Interpreter::REPLResult Interpreter::parseAndExecute(llvm::StringRef Line) {
   auto *LLVMModule = GenModule.getModule();
   performLLVMOptimizations(IRGenOpts, Ctx.Diags, /*diagMutex=*/nullptr,
                            LLVMModule, GenModule.getTargetMachine(),
+                           Ctx.SourceMgr.getFileSystem(),
                            /*out=*/nullptr);
 
   if (Ctx.hadError()) {
